@@ -1,0 +1,328 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "スケジュール管理システム",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "name": "RegisterScheduleIntent",
+          "slots": [
+            {
+              "name": "ScheduleDate",
+              "type": "AMAZON.DATE",
+              "samples": [
+                "{ScheduleDate}"
+              ]
+            },
+            {
+              "name": "ScheduleStartTime",
+              "type": "AMAZON.TIME",
+              "samples": [
+                "{ScheduleStartTime}"
+              ]
+            },
+            {
+              "name": "ScheduleEndTime",
+              "type": "AMAZON.TIME",
+              "samples": [
+                "{ScheduleEndTime}"
+              ]
+            },
+            {
+              "name": "ScheduleTitle",
+              "type": "ScheduleTitle",
+              "samples": [
+                "{ScheduleTitle}"
+              ]
+            }
+          ],
+          "samples": [
+            "アポイントメントをとって",
+            "予定をいれて"
+          ]
+        },
+        {
+          "name": "AMAZON.SelectIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.RepeatIntent",
+          "samples": []
+        },
+        {
+          "name": "SayScheduleIntent",
+          "slots": [],
+          "samples": [
+            "すべての予定を教えて"
+          ]
+        },
+        {
+          "name": "SayMostRecentReservationIntent",
+          "slots": [],
+          "samples": [
+            "一番近い予定を教えて"
+          ]
+        },
+        {
+          "name": "SayDailyScheduleIntent",
+          "slots": [
+            {
+              "name": "ScheduleDate",
+              "type": "AMAZON.DATE",
+              "samples": [
+                "{ScheduleDate} の予定を教えてください ",
+                "{ScheduleDate}"
+              ]
+            }
+          ],
+          "samples": [
+            "{ScheduleDate} に予定がありますか",
+            "{ScheduleDate} の予定を教えてください "
+          ]
+        }
+      ],
+      "types": [
+        {
+          "values": [
+            {
+              "name": {
+                "value": "買い物"
+              }
+            },
+            {
+              "name": {
+                "value": "インターンシップ",
+                "synonyms": [
+                  "インターン"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "説明会"
+              }
+            },
+            {
+              "name": {
+                "value": "セミナー"
+              }
+            },
+            {
+              "name": {
+                "value": "アルバイト"
+              }
+            },
+            {
+              "name": {
+                "value": "授業",
+                "synonyms": [
+                  "講義"
+                ]
+              }
+            }
+          ],
+          "name": "ScheduleTitle"
+        }
+      ]
+    },
+    "dialog": {
+      "intents": [
+        {
+          "name": "RegisterScheduleIntent",
+          "confirmationRequired": true,
+          "prompts": {
+            "confirmation": "Confirm.Intent.804820989279"
+          },
+          "slots": [
+            {
+              "name": "ScheduleDate",
+              "type": "AMAZON.DATE",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.804820989279.1618124145433"
+              }
+            },
+            {
+              "name": "ScheduleStartTime",
+              "type": "AMAZON.TIME",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.804820989279.787552216340"
+              }
+            },
+            {
+              "name": "ScheduleEndTime",
+              "type": "AMAZON.TIME",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.804820989279.814920317628"
+              }
+            },
+            {
+              "name": "ScheduleTitle",
+              "type": "ScheduleTitle",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.804820989279.160514704685"
+              }
+            }
+          ]
+        },
+        {
+          "name": "SayDailyScheduleIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "ScheduleDate",
+              "type": "AMAZON.DATE",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.844800725191.168490918499"
+              }
+            }
+          ]
+        }
+      ],
+      "delegationStrategy": "ALWAYS"
+    },
+    "prompts": [
+      {
+        "id": "Confirm.Intent.300422981683",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "あなたの誕生日は{year} 年 {month} 月 {day} 日ですかね"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.300422981683.1462866618690",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "あなたは何年生まれですか"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.300422981683.932115667577",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "あなたは何月に生まれましたか"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.300422981683.943471659571",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "あなたはどの日に生まれましたか"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Intent.804820989279",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": " {ScheduleDate} の {ScheduleStartTime} から {ScheduleEndTime} までの時間帯に {ScheduleTitle} の予定を入れても大丈夫ですか "
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.804820989279.1618124145433",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "予定の日付を教えてください"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.804820989279.787552216340",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "この予定の開始時間はいつですか"
+          },
+          {
+            "type": "PlainText",
+            "value": "この予定の開始時間を教えてください"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.804820989279.814920317628",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "この予定の終了時間を教えてください"
+          },
+          {
+            "type": "PlainText",
+            "value": "この予定の終了時間はいつですか"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.804820989279.160514704685",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "件名は何ですか"
+          },
+          {
+            "type": "PlainText",
+            "value": "予定の内容は何ですか"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Intent.1283669971517",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "予定を確認したいですか？それとも予定を入れたいですか？"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.844800725191.168490918499",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "どの日のの予定を知りたいですか？"
+          }
+        ]
+      }
+    ]
+  },
+  "version": "15"
+}
